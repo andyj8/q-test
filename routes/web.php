@@ -17,13 +17,3 @@ Route::get('/', function () {
 
 Route::match(['get', 'post'], '/botman', 'BotManController@handle');
 Route::get('/botman/tinker', 'BotManController@tinker');
-
-Route::get('/rds/list', 'RdsController@list');
-Route::get('/rds/status', 'RdsController@status');
-Route::get('/rds/create', 'RdsController@create');
-Route::get('/rds/delete', 'RdsController@delete');
-Route::get('/rds/start', 'RdsController@start');
-Route::get('/rds/stop', 'RdsController@stop');
-
-Route::get('/tags', 'RdsController@tags');
-Route::get('/quote', 'RdsController@quote');

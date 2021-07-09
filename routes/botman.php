@@ -1,6 +1,7 @@
 <?php
 
 use App\Services\InstanceManagement;
+use App\Services\QuoteParser;
 use App\Services\QuoteScraper;
 
 $botman = resolve('botman');
@@ -41,10 +42,12 @@ $botman->hears('help', function($bot) {
 
 $botman->hears('tags', function($bot) {
     $scraper = $this->app->make(QuoteScraper::class);
-    $bot->reply(view('tags', ['tags' => $scraper->getTags()])->render());
+    $parser = $this->app->make(QuoteParser::class);
+    $bot->reply(view('tags', ['tags' => $parser->getTags($scraper->getTagsContent())])->render());
 });
 
 $botman->hears('quote {tag}', function($bot, $tag) {
     $scraper = $this->app->make(QuoteScraper::class);
-    $bot->reply($scraper->getRandomQuote($tag));
+    $parser = $this->app->make(QuoteParser::class);
+    $bot->reply($parser->getRandomQuote($scraper->getQuotesContent($tag), $tag));
 });
