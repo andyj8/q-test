@@ -4,9 +4,7 @@ I used RDS as the target of the instance management so you will need to be able 
 
 I used ngrok to forward the events from Slack to my machine. The app uses port 8000 by default.
 
-I created a personal slack space under andyjb.slack.com.
-
-This token needs to be placed in the .env file.
+I created a personal slack space under andyjb.slack.com. The bot user token needs to be placed in the .env file.
 
 Once dependencies are installed, start the dev server.
 
